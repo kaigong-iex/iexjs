@@ -1,0 +1,509 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "description": "CRUD API client for iex data platform",
+    "title": "CRUD API iex",
+    "contact": {
+      "name": "iexcloud platform team"
+    },
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "cloud.staging.iexapis.com/v1",
+      "description": "cloud staging"
+    },
+    {
+      "url": "localhost:3006/v1",
+      "description": "cloud dev"
+    },
+    {
+      "url": "cloud.iexapis.com/v1",
+      "description": "cloud prod"
+    }
+  ],
+  "paths": {
+    "/datasets/{provider}": {
+      "get": {
+        "tags": [
+          "dataset operation"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "dataset list"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "400": {
+            "description": "Invalid params supplied"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "create"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "data provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maximumValidationErrors",
+            "in": "query",
+            "description": "allowed maximum validation errors",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "post body payload",
+          "required": true,
+          "content": {
+            "application/json": {
+            },
+            "application/x-jsonl": {
+            },
+            "text/csv": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "post operation success on dataset"
+          },
+          "404": {
+            "description": "resource not found"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/datasets/{provider}/{id}": {
+      "get": {
+        "tags": [
+          "dataset data operation"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "dataset list"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "400": {
+            "description": "Invalid params supplied"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "create"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "data provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maximumValidationErrors",
+            "in": "query",
+            "description": "allowed maximum validation errors",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "post body payload",
+          "required": true,
+          "content": {
+            "application/json": {
+            },
+            "application/x-jsonl": {
+            },
+            "text/csv": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "post operation success on dataset"
+          },
+          "404": {
+            "description": "resource not found"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "modify"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "data provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "post body payload",
+          "required": true,
+          "content": {
+            "application/json": {
+            },
+            "application/x-jsonl": {
+            },
+            "text/csv": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "post operation success on dataset"
+          },
+          "404": {
+            "description": "resource not found"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "modify"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "data provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maximumValidationErrors",
+            "in": "query",
+            "description": "allowed maximum validation errors",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "post body payload",
+          "required": true,
+          "content": {
+            "application/json": {
+            },
+            "application/x-jsonl": {
+            },
+            "text/csv": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "post operation success on dataset"
+          },
+          "404": {
+            "description": "resource not found"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "delete"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "data provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "maximumValidationErrors",
+            "in": "query",
+            "description": "allowed maximum validation errors",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "post body payload",
+          "required": true,
+          "content": {
+            "application/json": {
+            },
+            "application/x-jsonl": {
+            },
+            "text/csv": {
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "post operation success on dataset"
+          },
+          "404": {
+            "description": "resource not found"
+          },
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      }
+
+    
+    },
+    "/datasets/{provider}/{id}/{key}": {
+      "delete": {
+        "tags": [
+          "delete dataset data"
+        ],
+        "parameters": [
+          {
+            "name": "provider",
+            "in": "path",
+            "description": "provider name",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "description": "dataset id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "key",
+            "in": "path",
+            "description": "dataset data key",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "token",
+            "in": "query",
+            "description": "pk or sk token",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "limit",
+            "required": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "delete opertaion on dataset data success"
+          },
+          "404": {
+            "description": "not found"
+          },
+          "400": {
+            "description": "Invalid params supplied"
+          }
+        }
+      }
+    }
+  }
+}
