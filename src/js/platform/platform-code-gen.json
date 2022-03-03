@@ -10,16 +10,8 @@
   },
   "servers": [
     {
-      "url": "cloud.staging.iexapis.com/v1",
-      "description": "cloud staging"
-    },
-    {
-      "url": "localhost:3006/v1",
-      "description": "cloud dev"
-    },
-    {
       "url": "cloud.iexapis.com/v1",
-      "description": "cloud prod"
+      "description": "cloud"
     }
   ],
   "paths": {
@@ -507,3 +499,4 @@
     }
   }
 }
+
